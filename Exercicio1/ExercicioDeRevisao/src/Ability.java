@@ -1,8 +1,8 @@
 public class Ability {
     private String name;
-    private int number;
+    private float number;
 
-    public Ability(String name, int number) {
+    public Ability(String name, float number) {
         this.name = name;
         this.number = number;
     }
@@ -15,13 +15,24 @@ public class Ability {
         this.name = name;
     }
 
-    public int getNumber() {
+    public float getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(float number) {
         this.number = number;
     }
 
-    
+    @Override
+    public Object clone() {
+        try {
+            return (Ability) super.clone();
+        } catch (CloneNotSupportedException e) {
+            return new Ability(getName(), getNumber());
+        }
+    }
+
+    public String toString() { 
+        return this.name + ", " + this.number;
+    } 
 }

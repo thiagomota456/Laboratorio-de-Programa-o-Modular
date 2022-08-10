@@ -1,12 +1,14 @@
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Person {
     private String name;
-    private List<Ability> abilities;
-    
-    public Person(String name, List<Ability> abilities) {
+    private LinkedHashMap<String, Float> skill;
+
+    public Person(String name, LinkedHashMap<String, Float> skill) {
         this.name = name;
-        this.abilities = abilities;
+        this.skill = skill;
     }
 
     public String getName() {
@@ -17,15 +19,22 @@ public class Person {
         this.name = name;
     }
 
-    public List<Ability> getAbilities() {
-        return abilities;
+    public LinkedHashMap getSkill() {
+        return skill;
     }
 
-    public void setAbilities(List<Ability> abilities) {
-        this.abilities = abilities;
+    public void setSkill(LinkedHashMap<String, Float> skill) {
+        this.skill = skill;
     }
+    
+    public void addSkill(String key, Float value){
+        if(this.skill != null){
+            this.skill.put(key, value);
+        }
+    }
+    
+    public String toString() {
 
-    public void addAbility(Ability ability){
-        abilities.add(ability);
+        return this.name + ": " + this.getSkill().toString();
     }
 }
