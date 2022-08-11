@@ -12,78 +12,8 @@ public class App {
     private static final String DEFALUT_SKILL_PATH = "/home/thiago/Desktop/Laboratorio-de-Programa-o-Modular/Exercicio1/competencias";
     private static final String DEFALUT_PROFILE_PATH = "/home/thiago/Desktop/Laboratorio-de-Programa-o-Modular/Exercicio1/candidatos";
     
-    static Scanner scanner = new Scanner(System.in); 
-    
-    public static void main(String[] args) throws Exception{
-        
-        List<Person> people;
-        
-        System.out.println("Welcome to Exercício de revisão de programação\n");
-
-        System.out.print("Set file path ? [Y/n] ");
-        char option = scanner.nextLine().charAt(0);
-        System.out.println();
-        
-        switch(option){
-            case 'Y':
-            case 'y':
-                System.out.print("Type the skill path: ");
-                String pathSkill = scanner.nextLine();
-                System.out.println();
-                System.out.print("Type the profile path: ");
-                String pathProfile = scanner.nextLine();
-                System.out.println();
-                people = readFiles(pathSkill, pathProfile);
-                break;
-            case 'N':
-            case 'n':
-                people = readFiles(DEFALUT_SKILL_PATH, DEFALUT_PROFILE_PATH);
-                break;
-            default:
-                System.out.println("Abort.");
-                scanner.close();
-                return;
-        }
-
-        List<String> skill = new ArrayList<>();
-        for (Map.Entry<String, Float> entry : ((LinkedHashMap<String, Float>)people.get(0).getSkill()).entrySet()) {
-            skill.add(entry.getKey());
-        }
-
-        while(true){
-            System.out.print("1 - Dada uma habilidade, quem seria o melhor candidato?\n"+
-                             "2 - Dadas uma habilidade obrigatória e uma importante, quem seria o melhor candidato?\n"+
-                             "3 - Considerando o conjunto de habilidades, quem seria mais interessante para uma vaga?\n");
-            System.out.print("Digite o número correspondente, ou qualquer outra coisa pra sair: ");
-            var op = scanner.nextLine();
-
-            System.out.println();
-            System.out.println("Lista de habilidades:");
-            
-            System.out.println();
-
-            switch(op){
-                case "1":
-               
-                    System.out.print("Digite a habilidade (exatamente como foi listada) para selecionar o melhor candidato: ");
-                    var habilidade = scanner.nextLine();
-
-                    break;
-                case "2":
-                    break;
-                case "3":
-                    break;
-                default:
-                    scanner.close();
-                    return;
-            }
-        }
-        
-        
-    }
-
     //Meus testes
-    /*public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws Exception {
 
         var people = readFiles();
 
@@ -105,7 +35,7 @@ public class App {
         System.out.println();
 
         System.out.println(melhorComConjuntoDeHabilidades(people));
-    }*/
+    }
 
     private static String melhorComConjuntoDeHabilidades(List<Person> people){
         List<Ability> skillMediaPonderada = new ArrayList<>();
